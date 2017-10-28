@@ -12,4 +12,9 @@ before_install:
 
 script:
   - curl http://localhost:8080/
-  
+
+after_success:
+  - if [ "$TRAVIS_BRANCH" == "develop" ]; then
+    docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD";
+    docker push pasha1986/facetogif;
+    fi  
