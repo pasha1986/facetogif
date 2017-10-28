@@ -9,7 +9,7 @@ The easiest way to get a gif of your face -- or of whatever you point your webca
 ### How to run
 
 ##### Easy start!  Docker
-You can pull a pre-built docker image of the swagger-ui directly from Dockerhub:
+You can pull a pre-built docker image of the FaceToGif directly from Dockerhub:
 
 ```
 docker pull pasha1986/facetogif
