@@ -13,7 +13,7 @@ You can pull a pre-built docker image of the FaceToGif directly from Dockerhub:
 
 ```
 docker pull pablito1986/facetogif
-docker run -p 8080:80 pablito1986/facetogif
+docker run -p 80:8080 pablito1986/facetogif
 ```
 
 Will start nginx with FaceToGif on port 80.
