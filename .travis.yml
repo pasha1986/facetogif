@@ -1,20 +1,16 @@
 sudo: required
-
 language: ruby
-
 services:
-  - docker
-
+- docker
 before_install:
-  - docker build -t $DOCKER_USERNAME/facetogif .
-  - docker run -d -p 8080:80 $DOCKER_USERNAME/facetogif
-  - docker ps -a
-
+- docker build -t $DOCKER_USERNAME/facetogif .
+- docker run -d -p 8080:80 $DOCKER_USERNAME/facetogif
+- docker ps -a
 script:
-  - curl http://localhost:8080/
-
+- curl http://localhost:8080/
 after_success:
-  - if [ "$TRAVIS_BRANCH" == "develop" ]; then
-    docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD";
-    docker push $DOCKER_USERNAME/facetogif;
-    fi  
+- if [ "$TRAVIS_BRANCH" == "develop" ]; then docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD";
+  docker push $DOCKER_USERNAME/facetogif; fi
+notifications:
+  slack:
+    secure: oFZZcK8Kud1dxQwtaHCdSkMV2t1i2eM+2IVq/rJoyGPfPZBe9dwMLSJGNwg8ecRkbR4yTtS10tQNXQNf+auZ0zOfD9iiehdT1PwDkTrUSvjUtNq2zYuoLH80wW4h3Jxug7nIMXDHZx9VvUME33T4S29ADynQiGjqd6Ma3wg04dUouP5i2FcqCspjYGBL7+YXoHkZ2mEpMuJLKWubGYIP40nZ2WTacajPpwpvb9PTu1eHY6m8pSPwk66iWtcKEpDSfUgqxeaKQ/2ZJfRXKe+grVlwQi9vzNkxooAb8dDhS1V2ingf3/sHdiDKRva6+TCySboTYIlw9/5zjuXLekgZhVcneJ9OSnFC+S7Bs0oh4Y/2O8HSIqOcIPK6j8PKxN6snPuEhKHMPLr/iSwxvql1Xy56mO+9SDeMcUv48BMiQ61wT7aHAaBQDHGNaWOy/dvzCF/OjHknGuirVpopI0C+fSpAVqwZGJYaKyFNPC1EE50MlJiTDNyebwYvmVQKlOj4/Ot5SKKmJKU+8iy8BaorvehZ4+KkscGGm1y+QTcf5YsnHdvhADx2BCezm8wri1sjteTkBHqoQtkhuyr1+qNQUDTpD7aidHcV+0Hpow899oivHCLmMEBcAgCrFfaOOOH7nrA94YPUw+N2lrfWpVW2Cvs7jW3ARpFV9x3GRooPjvA=
